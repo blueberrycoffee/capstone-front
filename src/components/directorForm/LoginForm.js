@@ -9,7 +9,7 @@ const [username, setUsername] = useState('');
 const [password, setPassword] = useState('');
 
 const handleLogin = () => {
-    axios.post('/login', {
+    axios.post('http://localhost:8080/login', {
       username: username,
       password: password
     })
