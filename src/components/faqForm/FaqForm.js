@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Accordion,
   AccordionSummary,
@@ -10,37 +10,8 @@ import Navbar from "../../components/navbar/Navbar";
 import { makeStyles } from "@material-ui/core/styles";
 import "./FaqForm.css";
 import Footer from "../../components/footer/Footer";
+import axios from 'axios';
 
-const faqData = [
-  {
-    question: "아이디를 까먹었어요",
-    answer: "Answer1",
-  },
-  {
-    question: "비밀번호를 까먹었어요",
-    answer: "Answer2",
-  },
-  {
-    question: "나이제한 있나요",
-    answer: "Answer3",
-  },
-  {
-    question: "얼마에요",
-    answer: "Answer4",
-  },
-  {
-    question: "해외출원은 어떻게해요",
-    answer: "Answer5",
-  },
-  {
-    question: "마드리드가 뭐에요",
-    answer: "Answer6",
-  },
-  {
-    question: "환불 해주세요",
-    answer: "Answer7",
-  },
-];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -95,6 +66,17 @@ const useStyles = makeStyles((theme) => ({
 const FaqForm = () => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
+  const [faqData, setFaqData] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/api/faq")
+      .then((response) => {
+        setFaqData(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -131,12 +113,12 @@ const FaqForm = () => {
               id={`panel${index}-header`}
             >
               <Typography variant="h6" className={classes.question}>
-                Q. {faq.question}
+                Q. {faq.title}
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
               <Typography className={classes.answer}>
-                &nbsp;&nbsp;&nbsp;{faq.answer}
+                &nbsp;&nbsp;&nbsp;{faq.content}
               </Typography>
             </AccordionDetails>
           </Accordion>
