@@ -6,6 +6,7 @@ import { useState } from "react";
 import "./Navbar.scss";
 import logoImg from "../../assets/images/logo/복합.svg";
 
+
 const Navbar = ({ backgroundColor, borderBottom }) => {
   const [open, setOpen] = useState(false);
 
