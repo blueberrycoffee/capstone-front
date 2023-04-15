@@ -3,7 +3,8 @@ import Main from "./pages/main/Main";
 import Price from "./pages/price/Price";
 import DomesticMark from "./pages/domesticMark/DomesticMark";
 import Faq from "./pages/faq/Faq";
-import Director from "./pages/director/Director";
+import Login from "./admin/pages/login/Login";
+import AdminMain from "./admin/pages/main/AdminMain";
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
 
@@ -15,7 +16,8 @@ function App() {
         <Route path="/price" element={<Price />} />
         <Route path="/domesticmark" element={<DomesticMark />} />
         <Route path="/faq" element={<Faq />} />
-        <Route path="/director" element={<Director />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/adminMain" element={<AdminMain />} />
       </Routes>
     </div>
   );
