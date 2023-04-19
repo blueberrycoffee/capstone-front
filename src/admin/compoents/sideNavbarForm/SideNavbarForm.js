@@ -64,7 +64,7 @@ function SideNavbarForm() {
         <div className={classes.toolbar} />
         <img src={logo} alt="logo" className={classes.logo} />
         <List>
-          <ListItem button component={NavLink} to="/adminMain" onClick={handleListItemClick}>
+          <ListItem button component={NavLink} to="/dashboard" onClick={handleListItemClick}>
             <ListItemIcon className={classes.icon}>
               <SignalCellularAltOutlinedIcon/>
             </ListItemIcon>
